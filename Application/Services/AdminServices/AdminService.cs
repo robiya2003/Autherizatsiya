@@ -20,10 +20,17 @@ namespace Application.Services.AdminServices
             return _adminRepository.CreateAdmin(adminModel);
         }
 
+
+
         public AdminModel DeleteAdminNameAndPassword(AdminLogIn adminLogIn)
         {
             return _adminRepository.DeleteAdminNameAndPassword(adminLogIn);
         }
+
+
+
+
+
 
         public AdminLogIn EnterAdmin(AdminLogIn adminLogIn)
         {
@@ -35,9 +42,9 @@ namespace Application.Services.AdminServices
             return _adminRepository.GetByAdminNameAndPassword(adminLogIn);
         }
 
-        public AdminModel UpdateAdmin(AdminLogIn adminLogIn, CustomerModel adminModel)
+        public AdminModel UpdateAdmin(string username, string password, AdminModel adminModel)
         {
-            return _adminRepository.UpdateAdmin(adminLogIn, adminModel);
+            return _adminRepository.UpdateAdmin(username,password, adminModel);
         }
     }
 }

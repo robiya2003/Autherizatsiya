@@ -35,9 +35,9 @@ namespace Application.Services.CustomerServices
             return _customerRepository.GetByUserNameAndPassword(customerLogIn);
         }
 
-        public CustomerModel UpdateCustomer(CustomerLogIn customerLogIn, CustomerModel customerModel)
+        public CustomerModel UpdateCustomer(string username, string password, CustomerModel customerModel)
         {
-            return _customerRepository.UpdateCustomer(customerLogIn, customerModel);
+            return _customerRepository.UpdateCustomer(username,password, customerModel);
         }
     }
 }

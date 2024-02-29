@@ -11,7 +11,7 @@ namespace Application.IRepositories
     public  interface ICustomerRepository
     {
         public CustomerModel CreateCustomer(CustomerModel customerModel);
-        public CustomerModel UpdateCustomer(CustomerLogIn customerLogIn,CustomerModel customerModel);
+        public CustomerModel UpdateCustomer(string username, string password,CustomerModel customerModel);
         public CustomerModel GetByUserNameAndPassword(CustomerLogIn customerLogIn);
         public CustomerModel DeleteUserNameAndPassword(CustomerLogIn customerLogIn);
         public CustomerLogIn EnterUser(CustomerLogIn customerLogIn);
