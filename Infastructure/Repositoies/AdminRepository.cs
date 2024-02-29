@@ -35,17 +35,17 @@ namespace Infastructure.Repositoies
             var entiry = _context.admins.
                 FirstOrDefault(x => x.Password==adminLogIn.Password 
                 && x.Adminname==adminLogIn.Adminname);
-            _context.SaveChanges();
+            
             return adminLogIn;
 
         }
 
         public AdminModel GetByAdminNameAndPassword(AdminLogIn adminLogIn)
         {
-            var entiry = _context.admins.
+            AdminModel? entiry = _context.admins.
                 FirstOrDefault(x => x.Password == adminLogIn.Password
                 && x.Adminname == adminLogIn.Adminname);
-            _context.SaveChanges();
+            
             return entiry;
         }
 

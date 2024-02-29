@@ -15,30 +15,31 @@ namespace Api.Controllers
             _customerService = customerService;
         }
         [HttpPost]
-        public IActionResult CreateCustomer(CustomerModel customerModel)
+        public CustomerModel CreateCustomer(CustomerModel customerModel)
         {
-            return Ok(_customerService.CreateCustomer(customerModel));
+            return _customerService.CreateCustomer(customerModel);
         }
         [HttpDelete]
-        public IActionResult DeleteCustomer(CustomerLogIn customerLogIn)
+        public CustomerModel DeleteCustomer(string username, string password)
         {
-            return Ok(_customerService.DeleteUserNameAndPassword(customerLogIn));
+            
+            return _customerService.DeleteUserNameAndPassword(new CustomerLogIn(){Username = username,Password = password});
         }
         [HttpGet]
-        public IActionResult GetCustomers(CustomerLogIn customerLogIn)
+        public CustomerLogIn GetCustomers(string username, string password)
         {
-            return Ok(_customerService.EnterUser(customerLogIn));
+            return _customerService.EnterUser(new CustomerLogIn() { Username = username, Password = password });
         }
         [HttpGet]
-        public IActionResult GetUsernameByPasword(CustomerLogIn customer)
+        public CustomerModel GetUsernameByPasword(string username, string password)
         {
-            return Ok(_customerService.GetByUserNameAndPassword(customer));
+            return _customerService.GetByUserNameAndPassword(new CustomerLogIn() { Username = username, Password = password });
 
         }
         [HttpPut]
-        public IActionResult PutCustomer(string username, string password,CustomerModel customerModel)
+        public CustomerModel PutCustomer(string username, string password,CustomerModel customerModel)
         {
-            return Ok(_customerService.UpdateCustomer(username, password, customerModel));              
+            return _customerService.UpdateCustomer(username, password, customerModel);              
         }
     }
 }

@@ -15,31 +15,46 @@ namespace Api.Controllers
             _adminService = adminService;
         }
         [HttpPost]
-        public IActionResult PostAdmin(AdminModel adminModel)
+        public AdminModel PostAdmin(AdminModel adminModel)
         {
-            return Ok(_adminService.CreateAdmin(adminModel));
+            return _adminService.CreateAdmin(adminModel);
         }
         [HttpDelete]
-        public IActionResult DeleteAdmin(AdminLogIn adminLogIn)
+        public AdminModel DeleteAdmin(string username, string password)
         {
-            return Ok(_adminService.DeleteAdminNameAndPassword(adminLogIn));
+            AdminLogIn adminLogIn = new AdminLogIn()
+            {
+                Adminname = username,
+                Password = password
+            };
+            return _adminService.DeleteAdminNameAndPassword(adminLogIn);
         }
         [HttpGet]
-        public IActionResult GetAdmin(AdminLogIn adminLogIn)
+        public AdminLogIn GetAdmin(string username, string password)
         {
-            return Ok(_adminService.EnterAdmin(adminLogIn));
+            AdminLogIn adminLogIn = new AdminLogIn()
+            {
+                Adminname = username,
+                Password = password
+            };
+            return _adminService.EnterAdmin(adminLogIn);
         }
         
         [HttpGet]
-        public IActionResult GetByAdminNameAndPassword(AdminLogIn adminLogIn)
+        public AdminModel GetByAdminNameAndPassword(string username, string password)
         {
-            return Ok(_adminService.GetByAdminNameAndPassword(adminLogIn));
+            AdminLogIn adminLogIn = new AdminLogIn()
+            {
+                Adminname = username,
+                Password = password
+            };
+            return _adminService.GetByAdminNameAndPassword(adminLogIn);
         }
 
         [HttpPut]
-        public IActionResult PutAdmin(string username, string password, AdminModel adminModel)
+        public AdminModel PutAdmin(string username, string password, AdminModel adminModel)
         {
-            return Ok(_adminService.UpdateAdmin(username,password, adminModel));
+            return _adminService.UpdateAdmin(username,password, adminModel);
         }
     }
 }
