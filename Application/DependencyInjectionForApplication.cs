@@ -1,5 +1,6 @@
 ﻿using Application.IRepositories;
 using Application.Services.AdminServices;
+using Application.Services.AuthServices;
 using Application.Services.CustomerServices;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -16,6 +17,7 @@ namespace Application
         {
             services.AddScoped<IAdminService, AdminService>();
             services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IAuthService, AuthService>();
 
             return services;
         }
